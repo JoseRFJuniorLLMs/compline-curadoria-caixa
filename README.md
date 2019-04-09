@@ -13,8 +13,8 @@
       1. name:flask_production; port:8000
 1. Instalar Pacotes Básicos
    1. Acessar VM(overview> connect> SSH)
-      1. ssh <usuario>@<ip>
-      1. Password: <senha>
+      1. ssh usuario@ip
+      1. Password: senha
    1. sudo apt install python3-pip -y
    1. sudo pip3 install virtualenv
    1. sudo pip3 install virtualenvwrapper
