@@ -253,6 +253,27 @@ def extrair():
     t1.start()
     return 'Extraindo...'
 
+# Retreinar Acao
+@app.route("/retreinar_acao")
+def retreinar_acao():
+    t2 = asynctask(retreino_acao)
+    t2.start()
+    return 'Retreinando Acao...'
+
+# Retreinar Grupo
+@app.route("/retreinar_grupo")
+def retreinar_grupo():
+    t3 = asynctask(retreino_grupo)
+    t3.start()
+    return 'Retreinando Grupo...'
+
+# Retreinar Assunto
+@app.route("/retreinar_assunto")
+def retreinar_assunto():
+    t4 = asynctask(retreino_assunto)
+    t4.start()
+    return 'Retreinando Assunto...'
+
 # Retreinar
 @app.route("/retreinar")
 def retreinar():
@@ -271,4 +292,4 @@ def retreinar():
 def atualizar():
     t5 = asynctask(atualizar_processos)
     t5.start()
-    return 'Atualizando...'
+    return 'Atualizando'
