@@ -249,47 +249,55 @@ def processar(texto):
 # Extrair
 @app.route("/extrair")
 def extrair():
-    t1 = asynctask(extrair_mongo)
-    t1.start()
+    extrair_mongo()
+    #t1 = asynctask(extrair_mongo)
+    #t1.start()
     return 'Extraindo...'
 
 # Retreinar Acao
 @app.route("/retreinar_acao")
 def retreinar_acao():
-    t2 = asynctask(retreino_acao)
-    t2.start()
+    retreino_acao()
+    #t2 = asynctask(retreino_acao)
+    #t2.start()
     return 'Retreinando Acao...'
 
 # Retreinar Grupo
 @app.route("/retreinar_grupo")
 def retreinar_grupo():
-    t3 = asynctask(retreino_grupo)
-    t3.start()
+    retreino_grupo()
+    #t3 = asynctask(retreino_grupo)
+    #t3.start()
     return 'Retreinando Grupo...'
 
 # Retreinar Assunto
 @app.route("/retreinar_assunto")
 def retreinar_assunto():
-    t4 = asynctask(retreino_assunto)
-    t4.start()
+    retreino_assunto()
+    #t4 = asynctask(retreino_assunto)
+    #t4.start()
     return 'Retreinando Assunto...'
 
 # Retreinar
 @app.route("/retreinar")
 def retreinar():
-    t2 = asynctask(retreino_acao)
-    t2.start()
+    retreino_acao()
+    #t2 = asynctask(retreino_acao)
+    #t2.start()
 
-    t3 = asynctask(retreino_grupo)
-    t3.start()
+    retreino_grupo()
+    #t3 = asynctask(retreino_grupo)
+    #t3.start()
     
-    t4 = asynctask(retreino_assunto)
-    t4.start()
+    retreino_assunto()
+    #t4 = asynctask(retreino_assunto)
+    #t4.start()
     return 'Retreinando...'
 
 # Atualizar
 @app.route("/atualizar")
 def atualizar():
-    t5 = asynctask(atualizar_processos)
-    t5.start()
+    atualizar_processos()
+    #t5 = asynctask(atualizar_processos)
+    #t5.start()
     return 'Atualizando'
