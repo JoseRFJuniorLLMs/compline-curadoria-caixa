@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+
 # Bibliotecas
 import pandas as pd
 import threading
@@ -21,7 +22,8 @@ warnings.filterwarnings("ignore")
 
 # Tarefas Assincronas
 class asynctask(threading.Thread):
-    '''Classe para criação de tarefas assincronas.
+    '''
+    Classe para criação de tarefas assincronas.
     Esta classe recebe uma funcao e a transforma em uma tarefa assincrona.
     
     Atributos:
@@ -32,14 +34,16 @@ class asynctask(threading.Thread):
         - run
     '''
     def __init__(self, func):
-        '''task: nome da tarefas.
+        '''
+        task: nome da tarefas.
         func: funcao a ser decorada.
         '''
         threading.Thread.__init__(self)
         self.task = func.__name__
         self.func = func
     def run(self):
-        '''Inicia um cronometro.
+        '''
+        Inicia um cronometro.
         Procura as informacoes da tarefa dentro de uma colecao MongoDB.
         Inicia a funcao assincronamente.
         Para o cronometro.
@@ -53,11 +57,11 @@ class asynctask(threading.Thread):
             self.func()
             update = {'$set': {'emProcessamento':False,'ultimaDuracao': int(time()-t0), 'error':''}}
             threads.update_one(query, update)
-            print(self.task+' done!')
+            #print(self.task+' done!')
         except Exception as e:
             update = {'$set': {'emProcessamento':False,'ultimaDuracao': -1, 'error':str(e)}}
             threads.update_one(query, update)
-            print(self.task+' error!')
+            #print(self.task+' error!')
 
 # Processamento de Texto
 def process(s):
@@ -66,7 +70,8 @@ def process(s):
             
 # Data Wrangling
 def extrair_mongo():
-    '''Extrai todos os processos e palavras-chave do MongoDB.
+    '''
+    Extrai todos os processos e palavras-chave do MongoDB.
     Faz o merge com o gabarito(csv).
     Remove todas as chave nulas.
     Exporta o resultado para o arquivo df.csv
@@ -79,11 +84,12 @@ def extrair_mongo():
     df = df.merge(df1, 'left', left_on='numeroProcesso', right_on='NU_PROCESSO')[columns]
     df = df[df.NU_PROCESSO.notnull()]
     df.to_csv('df.csv')
-    print(df.shape)
+    #print(df.shape)
 
 # Modelo de Acao
 def retreino_acao():
-    '''(Re)Treina o modelo de Acao utilizando as palvras-chave.
+    '''
+    (Re)Treina o modelo de Acao utilizando as palvras-chave.
     Exporta o modelo para o arquivo model_acao.pkl.
     Gera as metricas de acuracia e as exporta para accuray_acao.json
     '''
@@ -97,7 +103,8 @@ def retreino_acao():
 
 # Modelo de Grupo
 def retreino_grupo():
-    '''(Re)Treina o modelo de Grupo utilizando as palvras-chave.
+    '''
+    (Re)Treina o modelo de Grupo utilizando as palvras-chave.
     Exporta o modelo para o arquivo model_grupo.pkl.
     Gera as metricas de acuracia e as exporta para accuray_grupo.json
     '''
@@ -111,7 +118,8 @@ def retreino_grupo():
 
 # Modelo de Assunto
 def retreino_assunto():
-    '''(Re)Treina o modelo de Assunto utilizando as palvras-chave.
+    '''
+    (Re)Treina o modelo de Assunto utilizando as palvras-chave.
     Exporta o modelo para o arquivo model_assunto.pkl.
     Gera as metricas de acuracia e as exporta para accuray_assunto.json
     '''
@@ -125,7 +133,8 @@ def retreino_assunto():
 
 # Atualizacao do Mongo
 def atualizar_processos():
-    '''Inicia um cronometro.
+    '''
+    Inicia um cronometro.
     Carrega os modelos de Acao, Grupo e Assunto.
     Carrega as acuracias dos modelos.
     Pesquisa no Mongo quais sao os documentos Aguardando Classificacao (Situacao 2)\
@@ -177,7 +186,8 @@ def atualizar_processos():
                      }
             processos.update_one(query, update)
         else:
-            print(p['_id'])
+            'Getulio'
+            #print(p['_id'])
 
     # Stop Timer
     controle.update_one({}, {'$set': {'emProcessamento': False,
@@ -185,7 +195,7 @@ def atualizar_processos():
                                       'tempoUltimoProcessamentoSec': int(time()-t0)
                                      }
                             })
-    print(controle.find_one({}))
+    #print(controle.find_one({}))
 
 # Flask
 from flask import Flask
@@ -210,7 +220,7 @@ threads = client[database].PythonThreads
 try:
     df = pd.read_csv(os.path.join(app.root_path,'df.csv'))
 except:
-    print('Extraindo Mongo...')
+    #print('Extraindo Mongo...')
     extrair_mongo()
 finally:
     df = pd.read_csv(os.path.join(app.root_path,'df.csv'))
