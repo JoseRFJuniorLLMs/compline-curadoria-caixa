@@ -253,7 +253,7 @@ def extrair():
     extrair_mongo()
     #t1 = asynctask(extrair_mongo)
     #t1.start()
-    return 'Extraindo...'
+    return 'Extraido!'
 
 # Retreinar Acao
 @app.route("/retreinar_acao")
@@ -261,7 +261,7 @@ def retreinar_acao():
     retreino_acao()
     #t2 = asynctask(retreino_acao)
     #t2.start()
-    return 'Retreinando Acao...'
+    return 'Acao Retreinado!'
 
 # Retreinar Grupo
 @app.route("/retreinar_grupo")
@@ -269,7 +269,7 @@ def retreinar_grupo():
     retreino_grupo()
     #t3 = asynctask(retreino_grupo)
     #t3.start()
-    return 'Retreinando Grupo...'
+    return 'Grupo Retreinado!'
 
 # Retreinar Assunto
 @app.route("/retreinar_assunto")
@@ -277,7 +277,7 @@ def retreinar_assunto():
     retreino_assunto()
     #t4 = asynctask(retreino_assunto)
     #t4.start()
-    return 'Retreinando Assunto...'
+    return 'Assunto Retreinado!'
 
 # Retreinar
 @app.route("/retreinar")
@@ -293,7 +293,7 @@ def retreinar():
     retreino_assunto()
     #t4 = asynctask(retreino_assunto)
     #t4.start()
-    return 'Retreinando...'
+    return 'Retreinado!'
 
 # Atualizar
 @app.route("/atualizar")
@@ -301,7 +301,7 @@ def atualizar():
     atualizar_processos()
     #t5 = asynctask(atualizar_processos)
     #t5.start()
-    return 'Atualizando'
+    return 'Atualizado!'
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", debug=True)
