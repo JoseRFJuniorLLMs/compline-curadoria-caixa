@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # Bibliotecas
 import pandas as pd
 import threading
@@ -301,3 +302,6 @@ def atualizar():
     #t5 = asynctask(atualizar_processos)
     #t5.start()
     return 'Atualizando'
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", debug=True)
