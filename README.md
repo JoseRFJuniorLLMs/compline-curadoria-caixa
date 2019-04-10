@@ -31,7 +31,7 @@
    1. cd Compline-CuradoriaCaixa
    1. pip install -r requirements.txt
 1. Publicar App
-   1. gunicorn app:app -b 0.0.0.0:8000 --reload
+   1. gunicorn app:app -b 0.0.0.0:8000 --timeout 3600 --reload
 1. Acessar VM para Debug
    1. Acessar VM(overview> connect> SSH)
       1. ssh usuario@ip
